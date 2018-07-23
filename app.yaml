@@ -7,9 +7,14 @@ handlers:
 - url: /images
   static_dir: images
 
+- url: /styles
+  static_dir: styles
+
 - url: /.*
   script: main.app
 
 libraries:
 - name: jinja2
   version: latest
+- name: webapp2
+  version: "2.5.2"
