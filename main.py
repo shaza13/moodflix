@@ -1,12 +1,12 @@
 import webapp2
 import jinja2
 import os
-from models import Recommendation
+# from models import Recommendation
 
 mood = ""
 occasion = ""
 
-inspirational_movies =
+
 
 the_jinja_environment = jinja2.Environment(
     loader = jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -21,8 +21,8 @@ class WelcomePage(webapp2.RequestHandler):
     def post(self):
         result_template = the_jinja_environment.get_template('templates/result.html')
         self.response.write(welcome_template.render())
-        global mood = self.request.get('mood')
-        global occasion = self.request.get('occasion')
+        mood = self.request.get('mood')
+        occasion = self.request.get('occasion')
 
 
 class ResultPage(webapp2.RequestHandler):
@@ -48,6 +48,6 @@ class ResultPage(webapp2.RequestHandler):
 
 
 app = webapp2.WSGIApplication([
-    ('/', WelcomePage)
-    ('/result', ResultPage)
+    ('/', WelcomePage),
+    ('/result', ResultPage),
 ], debug=True)
