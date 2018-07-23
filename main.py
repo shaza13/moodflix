@@ -17,7 +17,14 @@ class WelcomePage(webapp2.RequestHandler):
         self.response.write(welcome_template.render())
 
 class ResultPage(webapp2.RequestHandler):
-    def get()        
+    def get():
+        welcome_template = the_jinja_environment.get_template('templates/result.html')
+        self.response.write(welcome_template.render())
+
+    def post():
+        result_template = the_jinja_environment.get_template('templates/result.html')
+        self.response.write(result_template.render())
+            
 
 
 
@@ -28,5 +35,5 @@ class ResultPage(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/', WelcomePage)
-
-])
+    ('/result', ResultPage)
+], debug=True)
