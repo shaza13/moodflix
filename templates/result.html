@@ -5,8 +5,10 @@
 </head>
 <body>
   <div id="firstmovie">
-    <h1>{{Title}}</h1>
-    <p>{{Plot}}</p>
-    <p>{{Runtime}}</p>  
+    {% for movie in movies %}
+        <h1>{{movie.title}}</h1>
+    {% endfor %}
+    <!-- <p>{{Plot}}</p>
+    <p>{{Runtime}}</p>   -->
   </div>
 </html>
