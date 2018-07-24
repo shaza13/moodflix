@@ -6,3 +6,4 @@ class Movie(ndb.Model):
     rating = ndb.IntegerProperty()
     description = ndb.StringProperty()
     mood = ndb.StringProperty()
+    occasion = ndb.StringProperty()
