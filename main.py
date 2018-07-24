@@ -38,6 +38,7 @@ class ResultPage(webapp2.RequestHandler):
     def get(self):
         welcome_template = the_jinja_environment.get_template('templates/result.html')
         mood = self.request.get("mood")
+        occasion = self.request.get("occasion")
         movie_query = Movie.query()
         all_movies = movie_query.fetch()
         movie_dic = {
