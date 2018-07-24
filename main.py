@@ -19,23 +19,36 @@ class WelcomePage(webapp2.RequestHandler):
         self.response.write(welcome_template.render())
 
     def post(self):
-        result_template = the_jinja_environment.get_template('templates/result.html')
+        result_template = the_jinja_environment.get_template('templates/loading.html')
         self.response.write(welcome_template.render())
         mood = self.request.get('mood')
         occasion = self.request.get('occasion')
 
 
+class Upload(webapp2.RequestHandler):
+    def get(self):
+        welcome_template = the_jinja_environment.get_template('templates/loading.html')
+        shrek = Movie(title='Shrek', duration=123, rating=10, description='About an ogre who lives in a swamp.', mood='casual, silly')
+        shrek_key = shrek.put()
+        # self.response.write(welcome_template.render())
+        self.redirect("/result")
+
+
 class ResultPage(webapp2.RequestHandler):
-    def get():
+    def get(self):
         welcome_template = the_jinja_environment.get_template('templates/result.html')
-        self.response.write(welcome_template.render())
+        mood = self.request.get("mood")
+        movie_query = Movie.query()
+        all_movies = movie_query.fetch()
+        movie_dic = {
+            "movies": all_movies
+        }
+        self.response.write(welcome_template.render(movie_dic))
+        # if mood == "casual":
+        #     return Shrek
 
-        Recommendation.mood = mood
-        Recommendation.occasion = occasion
 
-
-
-    def post():
+    def post(self):
         result_template = the_jinja_environment.get_template('templates/result.html')
         self.response.write(result_template.render())
 
@@ -49,5 +62,6 @@ class ResultPage(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/', WelcomePage),
+    ('/loading', Upload),
     ('/result', ResultPage),
 ], debug=True)
