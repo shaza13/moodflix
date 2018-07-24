@@ -1,7 +1,7 @@
 import webapp2
 import jinja2
 import os
-# from models import Recommendation
+from models import Movie
 
 mood = ""
 occasion = ""
