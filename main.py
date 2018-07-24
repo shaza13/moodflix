@@ -28,8 +28,10 @@ class WelcomePage(webapp2.RequestHandler):
 class Upload(webapp2.RequestHandler):
     def get(self):
         welcome_template = the_jinja_environment.get_template('templates/loading.html')
-        shrek = Movie(title='Shrek', duration=123, rating=10, description='About an ogre who lives in a swamp.', mood='casual, silly')
+        shrek = Movie(title='Shrek', duration=123, rating=10, description='About an ogre who lives in a swamp.', mood='casual, silly', occasion='kids, family')
         shrek_key = shrek.put()
+        thor = Movie(title='Thor: Ragnarok', duration=130, rating=8, description='Thor is imprisoned on the planet Sakaar, and must race against time to return to Asgard and stop Ragnarök, the destruction of his world, at the hands of the powerful and ruthless villain Hela.', mood='humorous, cheerful', occasion='feeling super, casual')
+        thor_key = thor.put()
         # self.response.write(welcome_template.render())
         self.redirect("/result")
 
