@@ -6,9 +6,13 @@
 <body>
   <div id="firstmovie">
     {% for movie in movies %}
-        <h1>{{movie.title}}</h1>
+      <h1>{{movie.title}}</h1>
+      <p>{{movie.description}}</p>
+      <p>This movie is {{movie.duration}} minutes long.</p>
+      <p>This movie's rating is: {{movie.rating}}</p>
     {% endfor %}
     <!-- <p>{{Plot}}</p>
     <p>{{Runtime}}</p>   -->
   </div>
+</body>
 </html>
