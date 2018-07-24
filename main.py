@@ -49,8 +49,8 @@ class ResultPage(webapp2.RequestHandler):
         print(all_movies)
         for movie in all_movies:
             print(movie)
-            # if (movie.mood not in mood) and (movie.occasion not in occasion):  #todo find bug
-            #     movie.key.delete()
+            if (movie.mood not in mood) and (movie.occasion not in occasion):  #todo find bug
+                movie.key.delete()
 
         movie_dic = {
             "movies": all_movies
