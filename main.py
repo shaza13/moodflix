@@ -71,8 +71,6 @@ class ResultPage(webapp2.RequestHandler):
             "movies": rec_movies
         }
         self.response.write(welcome_template.render(movie_dic))
-        # if mood == "casual":
-        #     return Shrek
 
 
     def post(self):
