@@ -2,14 +2,15 @@
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="../styles/style.css">
+
 </head>
 <body>
   <div id="firstmovie">
     {% for movie in movies %}
       <h1>{{movie.title}}</h1>
-      <p>{{movie.description}}</p>
-      <p>This movie is {{movie.duration}} minutes long.</p>
-      <p>This movie's rating is: {{movie.rating}}</p>
+      <h2>{{movie.description}}</h2>
+      <h2>This movie is {{movie.duration}} minutes long.</h2>
+      <h2>This movie's rating is: {{movie.rating}}</h2>
     {% endfor %}
   </div>
 </body>
