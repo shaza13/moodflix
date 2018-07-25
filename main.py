@@ -183,7 +183,7 @@ class ResultPage(webapp2.RequestHandler):
         movie_dic = {
             "movies": rec_movies
         }
-        print(rec_movies)
+            
         result_template = the_jinja_environment.get_template('templates/result.html')
         self.response.write(result_template.render(movie_dic))
 
