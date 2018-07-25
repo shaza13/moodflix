@@ -47,8 +47,10 @@ class Upload(webapp2.RequestHandler):  # todo: adding to the database each run a
         pounds = Movie(title='Seven Pounds', duration=123, rating=8, description='A man with a fateful secret embarks on an extraordinary journey of redemption by forever changing the lives of seven strangers.', mood='inspirational', occasion='Casual Watching')
 
     def post(self):
-        print("Uploadpost")
-        self.redirect("/result")
+        mood = self.request.get('mood')
+        occasion = self.request.get('occasion')
+        result_template = the_jinja_environment.get_template('templates/result.html')
+        self.response.write(welcome_template.render())
 
 
 class ResultPage(webapp2.RequestHandler):
