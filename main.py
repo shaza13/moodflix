@@ -72,8 +72,19 @@ class ResultPage(webapp2.RequestHandler):
 
     def post(self):
         print("Resultpost")
+        mood = self.request.get("mood")
+        occasion = self.request.get("occasion")
+        movie_query = Movie.query()
+        all_movies = movie_query.fetch()
+        rec_movies = []
+        for movie in all_movies:
+            if (movie.mood in mood) and (movie.occasion in occasion):
+                rec_movies.append(movie)
+        movie_dic = {
+            "movies": rec_movies
+        }
         result_template = the_jinja_environment.get_template('templates/result.html')
-        self.response.write(result_template.render())
+        self.response.write(welcome_template.render(movie_dic))
 
 
 
