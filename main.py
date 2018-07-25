@@ -2,7 +2,7 @@ import webapp2
 import jinja2
 import os
 from models import Movie
-
+from google.appengine.ext import ndb
 
 
 
@@ -74,23 +74,53 @@ class ResultPage(webapp2.RequestHandler):
         print("Resultpost")
         mood = self.request.get("mood")
         occasion = self.request.get("occasion")
-        shrek = Movie(title='Shrek', duration=123, rating=10, description='About an ogre who lives in a swamp.', mood='humorous', occasion='Family Night')
-        shrek_key = shrek.put()
-        thor = Movie(title='Thor: Ragnarok', duration=130, rating=8, description='Thor is imprisoned on the planet Sakaar, and must race against time to return to Asgard and stop Ragnarok, the destruction of his world, at the hands of the powerful and ruthless villain Hela.', mood='humorous, cheerful', occasion='Casual Watching')
-        thor_key = thor.put()
-        wake = Movie(title='Before I wake', duration=97, rating=6, description='A couple adopt an orphaned child whose dreams - and nightmares - manifest physically as he sleeps.', mood='gloomy', occasion='halloween based')
-        wake_key = wake.put()
-        santa = Movie(title='Santa Buddies', duration=88, rating=5, description='At the North Pole, Santa Claus (Father Christmas) and his chief dog Santa Paws worry as the whole toy processing system is threatened by the weakening of its magical power source, the icicle drawing on Christmas spirit.', mood='cheerful', occasion='Christmas')
-        pounds = Movie(title='Seven Pounds', duration=123, rating=8, description='A man with a fateful secret embarks on an extraordinary journey of redemption by forever changing the lives of seven strangers.', mood='inspirational', occasion='Casual Watching')
+        print(mood)
+        print(occasion)
+        print("CHECK HERE!")
         movie_query = Movie.query()
+        if Movie.query().count() == 0:
+            shrek = Movie(title='Shrek', duration=123, rating=10, description='About an ogre who lives in a swamp.', mood='humorous', occasion='Family Night')
+            shrek_key = shrek.put()
+            print("adding movies")
+            thor = Movie(title='Thor: Ragnarok', duration=130, rating=8, description='Thor is imprisoned on the planet Sakaar, and must race against time to return to Asgard and stop Ragnarok, the destruction of his world, at the hands of the powerful and ruthless villain Hela.', mood='humorous, cheerful', occasion='Casual Watching')
+            thor_key = thor.put()
+            wake = Movie(title='Before I wake', duration=97, rating=6, description='A couple adopt an orphaned child whose dreams - and nightmares - manifest physically as he sleeps.', mood='gloomy', occasion='halloween based')
+            wake_key = wake.put()
+            santa = Movie(title='Santa Buddies', duration=88, rating=5, description='At the North Pole, Santa Claus (Father Christmas) and his chief dog Santa Paws worry as the whole toy processing system is threatened by the weakening of its magical power source, the icicle drawing on Christmas spirit.', mood='cheerful', occasion='Christmas')
+            santa_key = santa.put()
+            pounds = Movie(title='Seven Pounds', duration=123, rating=8, description='A man with a fateful secret embarks on an extraordinary journey of redemption by forever changing the lives of seven strangers.', mood='inspirational', occasion='Casual Watching')
+            pounds_key = pounds.put()
+        else:
+            print("deleting movies")
+            movie_list = Movie.query().fetch(keys_only = True)
+            ndb.delete_multi(movie_list)
+            shrek = Movie(title='Shrek', duration=123, rating=10, description='About an ogre who lives in a swamp.', mood='humorous', occasion='Family Night')
+            shrek_key = shrek.put()
+            print("adding movies")
+            thor = Movie(title='Thor: Ragnarok', duration=130, rating=8, description='Thor is imprisoned on the planet Sakaar, and must race against time to return to Asgard and stop Ragnarok, the destruction of his world, at the hands of the powerful and ruthless villain Hela.', mood='humorous, cheerful', occasion='Casual Watching')
+            thor_key = thor.put()
+            wake = Movie(title='Before I wake', duration=97, rating=6, description='A couple adopt an orphaned child whose dreams - and nightmares - manifest physically as he sleeps.', mood='gloomy', occasion='halloween based')
+            wake_key = wake.put()
+            santa = Movie(title='Santa Buddies', duration=88, rating=5, description='At the North Pole, Santa Claus (Father Christmas) and his chief dog Santa Paws worry as the whole toy processing system is threatened by the weakening of its magical power source, the icicle drawing on Christmas spirit.', mood='cheerful', occasion='Christmas')
+            santa_key = santa.put()
+            pounds = Movie(title='Seven Pounds', duration=123, rating=8, description='A man with a fateful secret embarks on an extraordinary journey of redemption by forever changing the lives of seven strangers.', mood='inspirational', occasion='Casual Watching')
+            pounds_key = pounds.put()
         all_movies = movie_query.fetch()
         rec_movies = []
         for movie in all_movies:
-            if (movie.mood in mood) and (movie.occasion in occasion):
+            print("\n\n")
+            print(mood)
+            print(movie.mood)
+            print(occasion)
+            print(movie.occasion)
+            print("\n\n")
+            if (mood in movie.mood) and (occasion in movie.occasion):
+                print "movie found!!!!!!"
                 rec_movies.append(movie)
         movie_dic = {
             "movies": rec_movies
         }
+        print(rec_movies)
         result_template = the_jinja_environment.get_template('templates/result.html')
         self.response.write(result_template.render(movie_dic))
 
