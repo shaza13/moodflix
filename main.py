@@ -76,7 +76,6 @@ class ResultPage(webapp2.RequestHandler):
         occasion = self.request.get("occasion")
         print(mood)
         print(occasion)
-        print("CHECK HERE!")
         movie_query = Movie.query()
         if Movie.query().count() == 0:
             shrek = Movie(title='Shrek', duration=123, rating=10, description='About an ogre who lives in a swamp.', mood='humorous', occasion='Family Night')
