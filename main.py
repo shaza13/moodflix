@@ -3,8 +3,6 @@ import jinja2
 import os
 from models import Movie
 
-mood = ""
-occasion = ""
 
 
 
@@ -36,7 +34,6 @@ class Upload(webapp2.RequestHandler):  # todo: adding to the database each run a
         print("uploadget")
         print(mood)
         print(occasion)
-        occasion = self.request.get('occasion')
         shrek = Movie(title='Shrek', duration=123, rating=10, description='About an ogre who lives in a swamp.', mood='humorous', occasion='Family Night')
         shrek_key = shrek.put()
         thor = Movie(title='Thor: Ragnarok', duration=130, rating=8, description='Thor is imprisoned on the planet Sakaar, and must race against time to return to Asgard and stop Ragnarok, the destruction of his world, at the hands of the powerful and ruthless villain Hela.', mood='humorous, cheerful', occasion='Casual Watching')
@@ -52,7 +49,6 @@ class Upload(webapp2.RequestHandler):  # todo: adding to the database each run a
         occasion = self.request.get('occasion')
         result_template = the_jinja_environment.get_template('templates/result.html')
         self.response.write(result_template.render())
-
 
 class ResultPage(webapp2.RequestHandler):
     def get(self):
@@ -78,11 +74,6 @@ class ResultPage(webapp2.RequestHandler):
         print("Resultpost")
         result_template = the_jinja_environment.get_template('templates/result.html')
         self.response.write(result_template.render())
-
-
-
-
-
 
 
 
