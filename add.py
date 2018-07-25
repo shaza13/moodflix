@@ -1,6 +1,6 @@
-moana = Movie(title='Moana', duration='107', rating=8, description="In Ancient Polynesia, when a terrible curse incurred by the Demigod Maui reaches Moana's island, she answers the Ocean's call to seek out the Demigod to set things right.", mood='cheerful, mellow', occasion='family night, play date, casual watching')
+moana = Movie(title='Moana', duration=107, rating=8, description="In Ancient Polynesia, when a terrible curse incurred by the Demigod Maui reaches Moana's island, she answers the Ocean's call to seek out the Demigod to set things right.", mood='cheerful, mellow', occasion='family night, play date, casual watching')
 moana_key = moana.put()
-despicable = Movie(title='Despicable Me 3', duration='89', rating=6, description='Gru meets his long-lost charming, cheerful, and more successful twin brother Dru who wants to team up with him for one last criminal heist.', mood='humorous, cheerful', occasion='Play Date, Family Night')
+despicable = Movie(title='Despicable Me 3', duration=89, rating=6, description='Gru meets his long-lost charming, cheerful, and more successful twin brother Dru who wants to team up with him for one last criminal heist.', mood='humorous, cheerful', occasion='Play Date, Family Night')
 despicable_key = despicable.put()
 cars = Movie(title='Cars 3', duration='102', rating=7, description="Lightning McQueen sets out to prove to a new generation of racers that he's still the best race car in the world.", mood='nostalgic, cheerful', occasion='casual watching, alone time')
 cars_key = cars.put()
@@ -64,3 +64,4 @@ jurassic = Movie(title='Jurassic Park', duration='127', rating=8, description='D
 jurassic_key = jurassic.put()
 coraline = Movie(title='Coraline', duration='100', rating=8, description='An adventurous 11-year-old girl finds another world that is a strangely idealized version of her frustrating home, but it has sinister secrets.', mood='gloomy', occasion='Halloween, casual watching, alone time')
 coraline_key = coraline.put()
+kubo = Movie(title='Kubo and the Two Strings', duration='101', rating=8, description='A young boy named Kubo must locate a magical suit of armour worn by his late father in order to defeat a vengeful spirit from the past.', mood='cheerful', occasion='')
