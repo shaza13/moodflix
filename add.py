@@ -66,4 +66,6 @@ coraline = Movie(title='Coraline', duration=100, rating=8, description='An adven
 coraline_key = coraline.put()
 kubo = Movie(title='Kubo and the Two Strings', duration=101, rating=8, description='A young boy named Kubo must locate a magical suit of armour worn by his late father in order to defeat a vengeful spirit from the past.', mood='cheerful', occasion='casual watching, indecisive')
 kubo_key = kubo.put()
-tangerine = Movie(title='Tangerine', duration=108, rating=7, description='A hooker tears through Tinseltown on Christmas Eve searching for the pimp who broke her heart.', mood='humorous, ')
+tangerine = Movie(title='Tangerine', duration=108, rating=7, description='A hooker tears through Tinseltown on Christmas Eve searching for the pimp who broke her heart.', mood='humorous, cheerful', occasion='casual watching, alone time, indecisive')
+tangerine_key = tangerine.put()
+gilmore = Movie(title='Happy Gilmore', duration=92, rating=7, description="A rejected hockey player puts his skills to the golf course to save his grandmother's house.")
