@@ -8,6 +8,6 @@
 ####  * google appengine
 
 ## Authors
-###   * Jamison Johnson
-###   * Shaza Mehdi
-###   * Darius Daniel
+###   * [Jamison Johnson](https://github.com/2rasta)
+###   * [Shaza Mehdi](https://github.com/shaza13)
+###   * [Darius Daniel](https://github.com/Drdj11)
