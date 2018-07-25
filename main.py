@@ -55,9 +55,9 @@ class ResultPage(webapp2.RequestHandler):
         welcome_template = the_jinja_environment.get_template('templates/result.html')
         mood = self.request.get("mood")
         occasion = self.request.get("occasion")
-        print("Resultget")
-        print(mood)
-        print(occasion)
+        # print("Resultget")
+        # print(mood)
+        # print(occasion)
         movie_query = Movie.query()
         all_movies = movie_query.fetch()
         rec_movies = []
