@@ -17,15 +17,14 @@ class WelcomePage(webapp2.RequestHandler):
     def get(self):
         welcome_template = the_jinja_environment.get_template('templates/welcome.html')
         self.response.write(welcome_template.render())
+        print("welcomeget")
 
     def post(self):
-        print("WelcomePage")
-        print(mood)
-        print(occasion)
-        result_template = the_jinja_environment.get_template('templates/loading.html')
-        self.response.write(welcome_template.render())
+        print("WelcomePost")
         mood = self.request.get('mood')
         occasion = self.request.get('occasion')
+        result_template = the_jinja_environment.get_template('templates/loading.html')
+        self.response.write(welcome_template.render())
 
 
 
@@ -33,6 +32,10 @@ class Upload(webapp2.RequestHandler):  # todo: adding to the database each run a
     def get(self):
         welcome_template = the_jinja_environment.get_template('templates/loading.html')
         mood = self.request.get('mood')
+        occasion = self.request.get('occasion')
+        print("uploadget")
+        print(mood)
+        print(occasion)
         occasion = self.request.get('occasion')
         shrek = Movie(title='Shrek', duration=123, rating=10, description='About an ogre who lives in a swamp.', mood='humorous', occasion='Family Night')
         shrek_key = shrek.put()
@@ -44,14 +47,18 @@ class Upload(webapp2.RequestHandler):  # todo: adding to the database each run a
         pounds = Movie(title='Seven Pounds', duration=123, rating=8, description='A man with a fateful secret embarks on an extraordinary journey of redemption by forever changing the lives of seven strangers.', mood='inspirational', occasion='Casual Watching')
 
     def post(self):
+        print("Uploadpost")
         self.redirect("/result")
 
 
 class ResultPage(webapp2.RequestHandler):
     def get(self):
         welcome_template = the_jinja_environment.get_template('templates/result.html')
-        # mood = self.request.get("mood")
-        # occasion = self.request.get("occasion")
+        mood = self.request.get("mood")
+        occasion = self.request.get("occasion")
+        print("Resultget")
+        print(mood)
+        print(occasion)
         movie_query = Movie.query()
         all_movies = movie_query.fetch()
         rec_movies = []
@@ -68,6 +75,7 @@ class ResultPage(webapp2.RequestHandler):
 
 
     def post(self):
+        print("Resultpost")
         result_template = the_jinja_environment.get_template('templates/result.html')
         self.response.write(result_template.render())
 
