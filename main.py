@@ -65,7 +65,6 @@ class ResultPage(webapp2.RequestHandler):
         for movie in all_movies:
             if (movie.mood in mood) and (movie.occasion in occasion):
                 rec_movies.append(movie)
-
         movie_dic = {
             "movies": rec_movies
         }
