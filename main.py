@@ -19,25 +19,29 @@ class WelcomePage(webapp2.RequestHandler):
         self.response.write(welcome_template.render())
 
     def post(self):
+        print("WelcomePage")
+        print(mood)
+        print(occasion)
         result_template = the_jinja_environment.get_template('templates/loading.html')
         self.response.write(welcome_template.render())
         mood = self.request.get('mood')
         occasion = self.request.get('occasion')
 
 
-class Upload(webapp2.RequestHandler):
+
+class Upload(webapp2.RequestHandler):  # todo: adding to the database each run and result show second time
     def get(self):
         welcome_template = the_jinja_environment.get_template('templates/loading.html')
         mood = self.request.get('mood')
         occasion = self.request.get('occasion')
-        shrek = Movie(title='Shrek', duration=123, rating=10, description='About an ogre who lives in a swamp.', mood='casual, silly', occasion='kids, family')
+        shrek = Movie(title='Shrek', duration=123, rating=10, description='About an ogre who lives in a swamp.', mood='humorous', occasion='Family Night')
         shrek_key = shrek.put()
-        thor = Movie(title='Thor: Ragnarok', duration=130, rating=8, description='Thor is imprisoned on the planet Sakaar, and must race against time to return to Asgard and stop Ragnarok, the destruction of his world, at the hands of the powerful and ruthless villain Hela.', mood='humorous, cheerful', occasion='feeling super, casual')
+        thor = Movie(title='Thor: Ragnarok', duration=130, rating=8, description='Thor is imprisoned on the planet Sakaar, and must race against time to return to Asgard and stop Ragnarok, the destruction of his world, at the hands of the powerful and ruthless villain Hela.', mood='humorous, cheerful', occasion='Casual Watching')
         thor_key = thor.put()
         wake = Movie(title='Before I wake', duration=97, rating=6, description='A couple adopt an orphaned child whose dreams - and nightmares - manifest physically as he sleeps.', mood='gloomy', occasion='halloween based')
         wake_key = wake.put()
         santa = Movie(title='Santa Buddies', duration=88, rating=5, description='At the North Pole, Santa Claus (Father Christmas) and his chief dog Santa Paws worry as the whole toy processing system is threatened by the weakening of its magical power source, the icicle drawing on Christmas spirit.', mood='cheerful', occasion='Christmas')
-        pounds = Movie(title='Seven Pounds', duration=123, rating=8, description='A man with a fateful secret embarks on an extraordinary journey of redemption by forever changing the lives of seven strangers.', mood='inspirational', occasion='')
+        pounds = Movie(title='Seven Pounds', duration=123, rating=8, description='A man with a fateful secret embarks on an extraordinary journey of redemption by forever changing the lives of seven strangers.', mood='inspirational', occasion='Casual Watching')
 
         # self.response.write(welcome_template.render())
         self.redirect("/result")
@@ -46,19 +50,17 @@ class Upload(webapp2.RequestHandler):
 class ResultPage(webapp2.RequestHandler):
     def get(self):
         welcome_template = the_jinja_environment.get_template('templates/result.html')
-        mood = self.request.get("mood")
-        occasion = self.request.get("occasion")
+        # mood = self.request.get("mood")
+        # occasion = self.request.get("occasion")
         movie_query = Movie.query()
         all_movies = movie_query.fetch()
-        print(type(all_movies))
-        print(all_movies)
+        rec_movies = []
         for movie in all_movies:
-            print(movie)
-            if (movie.mood not in mood) and (movie.occasion not in occasion):  #todo find bug
-                movie.key.delete()
+            if (movie.mood in mood) and (movie.occasion in occasion):
+                rec_movies.append(movie)
 
         movie_dic = {
-            "movies": all_movies
+            "movies": rec_movies
         }
         self.response.write(welcome_template.render(movie_dic))
         # if mood == "casual":
