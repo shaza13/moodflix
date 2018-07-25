@@ -4,11 +4,14 @@ body {
 
 h1 {
     color: white;
-    margin-left: 20px;
+    font-family: Verdana
+    margin-left: 7%;
 
 }
-h2{
+h3{
   color: white;
+  font-family: Verdana
+  margin-left: 7%
 
 }
 .center {
