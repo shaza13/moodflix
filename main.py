@@ -99,6 +99,6 @@ class ResultPage(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/', WelcomePage),
-    ('/loading', Upload),
+    # ('/loading', Upload),
     ('/result', ResultPage),
 ], debug=True)
