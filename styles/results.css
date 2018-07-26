@@ -1,0 +1,40 @@
+body {
+    background-color: darkred;
+}
+
+h1 {
+    color: white;
+    font-family: Verdana
+    margin-left: 7%;
+
+}
+h3{
+  color: white;
+  font-family: Verdana
+  margin-left: 7%
+
+}
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+img {
+  height: 300px;
+  width: 200px;
+}
+.movieline {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+.movieinfo {
+    margin-right: 10px;
+}
+
+button {
+margin-top: 7%
+}
+form {
+}

@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="../styles/style.css">
+  <link rel="stylesheet" type="text/css" href="../styles/results.css">
 
 </head>
 <body>
   <div id="firstmovie">
-    {% for movie in movies %}
-      <h1>{{movie.title}}</h1>
-      <h3>{{movie.description}}</h3>
-      <h3>Duration: {{movie.duration}} minutes</h3>
-      <h3>IMDb Rating: {{movie.rating}} /10</h3>
+    {% for movieObject in movies %}
+      <div class="movieline">
+        <div class="movieinfo">
+          <h1>{{movieObject.movie.title}}</h1>
+          <h3>{{movieObject.movie.description}}</h3>
+          <h3>Duration: {{movieObject.movie.duration}} minutes</h3>
+          <h3>IMDb Rating: {{movieObject.movie.rating}} /10</h3>
+        </div>
+        <img src={{movieObject.poster}} align="right">
+      </div>
     {% endfor %}
-    {% for poster in posters %}
-      <img src={{poster}}>
-    {% endfor %}
+    <!-- {% for poster in posters %}
+      <img src={{poster}} align="right">
+    {% endfor %} -->
   </div>
 </body>
 </html>
