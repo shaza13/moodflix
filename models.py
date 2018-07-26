@@ -7,4 +7,3 @@ class Movie(ndb.Model):
     description = ndb.StringProperty()
     mood = ndb.StringProperty()
     occasion = ndb.StringProperty()
-    poster = ndb.ImageProperty(required=False)
