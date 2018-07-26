@@ -171,19 +171,22 @@ class ResultPage(webapp2.RequestHandler):
         all_movies = movie_query.fetch()
         rec_movies = []
         for movie in all_movies:
-            print("Movie")
-            print(mood)
-            print(movie.mood)
-            print(occasion)
-            print(movie.occasion)
-            print("\n\n")
+            # print("Movie")
+            # print(mood)
+            # print(movie.mood)
+            # print(occasion)
+            # print(movie.occasion)
+            # print("\n\n")
             if (mood in movie.mood) and (occasion in movie.occasion):
                 print "movie found!!!!!!"
                 rec_movies.append(movie)
+                url = "https://api.themoviedb.org/3/search/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&query="
+                result = urlfetch.fetch(url) + movie
+                print(result.content)
         movie_dic = {
             "movies": rec_movies
         }
-            
+
         result_template = the_jinja_environment.get_template('templates/result.html')
         self.response.write(result_template.render(movie_dic))
 
