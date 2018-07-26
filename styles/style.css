@@ -4,13 +4,13 @@ body {
 
 h1 {
     color: white;
-    font-family: Verdana
+    font-family: Lato
     margin-left: 7%;
 
 }
 h3{
   color: white;
-  font-family: Verdana
+  font-family: Lato
   margin-left: 7%
 
 }
@@ -25,7 +25,7 @@ img {
 }
 
 button {
-margin-top: 7% 
+margin-top: 7%
 }
 form {
 }
