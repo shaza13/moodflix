@@ -153,6 +153,32 @@ class ResultPage(webapp2.RequestHandler):
             jurassic_key = jurassic.put()
             coraline = Movie(title='Coraline', duration=100, rating=8, description='An adventurous 11-year-old girl finds another world that is a strangely idealized version of her frustrating home, but it has sinister secrets.', mood='gloomy', occasion='halloween, casual watching, alone time')
             coraline_key = coraline.put()
+            kubo = Movie(title='Kubo and the Two Strings', duration=101, rating=8, description='A young boy named Kubo must locate a magical suit of armour worn by his late father in order to defeat a vengeful spirit from the past.', mood='cheerful', occasion='casual watching, indecisive')
+            kubo_key = kubo.put()
+            tangerine = Movie(title='Tangerine', duration=108, rating=7, description='A hooker tears through Tinseltown on Christmas Eve searching for the pimp who broke her heart.', mood='humorous, cheerful', occasion='casual watching, alone time, indecisive')
+            tangerine_key = tangerine.put()
+            gilmore = Movie(title='Happy Gilmore', duration=92, rating=7, description="A rejected hockey player puts his skills to the golf course to save his grandmother's house.", mood ='humorous, cheerful', occasion='alone time, casual watching')
+            gilmore_key = gilmore.put()
+            thirteen = Movie(title='13 Going On 30', duration=98, rating=6, description='A girl makes a wish on her thirteenth birthday, and wakes up the next day as a thirty-year-old woman.', mood='cheerful, humorous, romantic', occasion='date night, alone time')
+            thirteen_key = thirteen.put()
+            buy = Movie(title="Can't Buy Me Love", duration=94, rating=7, description='A nerdy outcast secretly pays the most popular girl in school one thousand dollars to be his girlfriend.', mood='mellow, nostalgic, humorous', occasion='date night, alone time')
+            buy_key = buy.put()
+            tendays = Movie(title='How to Lose a Guy in 10 Days', duration=96, rating=6, description="Benjamin Barry is an advertising executive and ladies' man who, to win a big campaign, bets that he can make a woman fall in love with him in 10 days. Andie Anderson covers the 'How To' beat for 'Composure' magazine and is assigned to write an article on 'How to Lose a Guy in 10 days.'", mood='romantic, humorous, cheerful', occasion='date night, indecisive, casual watching')
+            tendays_key = tendays.put()
+            mulan = Movie(title='Mulan', duration=88, rating=8, description="To save her father from death in the army, a young maiden secretly goes in his place and becomes one of China's greatest heroines in the process.", mood='nostalgic, energetic, mellow', occasion='indecisive, family night, casual watching')
+            mulan_key = mulan.put()
+            prince = Movie(title='A Christmas Prince', duration=92, rating=6, description='When a reporter goes undercover as a tutor to get the inside scoop on a playboy prince, she gets tangled in some royal intrigue and ends up finding love - but will she be able to keep up her lie?', mood='humorous, romantic', occasion='christmas, alone time, indecisive')
+            prince_key = prince.put()
+            kissmas = Movie(title='Merry Kissmas', duration=89, rating=6, description='A woman engaged to marry a self-centered film and stage director/choreographer falls for a caterer whom she kisses, as does he for her.', mood=' romantic, humorous,', occasion='christmas, alone time')
+            kissmas_key = kissmas.put()
+            bolt = Movie(title='Bolt', duration=96, rating=7, description='The canine star of a fictional sci-fi/action show that believes his powers are real embarks on a cross country trek to save his co-star from a threat he believes is just as real.', mood='energetic, gloomy', occasion='indecisive, playdate, family night')
+            bolt_key = bolt.put()
+            angels = Movie(title='Angels in the Snow', duration=90, rating=6, description='When nothing short of a miracle can hold a deteriorating family together, a Christmas getaway sets the stage for a miracle to occur. A heartwarming family story of love, loss and rediscovery.', mood='energetic, humorous', occasion='christmas, family night')
+            angels_key = angels.put()
+            tarzan = Movie(title='Tarzan', duration=88, rating=7, description='A man raised by gorillas must decide where he really belongs when he discovers he is a human.', mood='nostalgic, energetic', occasion='family night, casual watching')
+            tarzan_key = tarzan.put()
+            spooky = Movie(title='Spooky Buddies', duration=88, rating=5, description='The puppies go on a spooky adventure through a haunted mansion.', mood='cheerful, mellow, humorous', occasion='halloween, family night')
+            spooky_key = spooky.put()
         else:
             pass
             # print("deleting movies")
@@ -200,10 +226,17 @@ class ResultPage(webapp2.RequestHandler):
         self.response.write(result_template.render(movie_dic))
 
 
-
+class AboutPage(webapp2.RequestHandler):
+    def get(self):
+        welcome_template = the_jinja_environment.get_template('templates/about.html')
+        self.response.write(welcome_template.render())
+    def post(self):
+        result_template = the_jinja_environment.get_template('templates/about.html')
+        self.response.write(result_template.render())
 
 app = webapp2.WSGIApplication([
     ('/', WelcomePage),
     # ('/loading', Upload),
     ('/result', ResultPage),
+    ('/about', AboutPage),
 ], debug=True)

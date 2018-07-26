@@ -1,0 +1,15 @@
+body {
+    background-color: darkred;
+}
+
+#info,h1,#credit {
+    color: white;
+    font-family: Lato;
+    text-align: center;
+    font-size: 30px;
+}
+
+#credit {
+  bottom: 0;
+  text-align: center;
+}
