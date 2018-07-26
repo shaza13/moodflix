@@ -3,6 +3,9 @@ import jinja2
 import os
 from models import Movie
 from google.appengine.ext import ndb
+from google.appengine.api import urlfetch
+import json
+import urllib
 
 
 
@@ -170,21 +173,24 @@ class ResultPage(webapp2.RequestHandler):
         movie_query = Movie.query()
         all_movies = movie_query.fetch()
         rec_movies = []
+        movie_posters = []
         for movie in all_movies:
-            # print("Movie")
-            # print(mood)
-            # print(movie.mood)
-            # print(occasion)
-            # print(movie.occasion)
-            # print("\n\n")
             if (mood in movie.mood) and (occasion in movie.occasion):
                 print "movie found!!!!!!"
                 rec_movies.append(movie)
                 url = "https://api.themoviedb.org/3/search/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&query="
-                result = urlfetch.fetch(url) + movie
+                result = urlfetch.fetch(url + urllib.quote_plus(movie.title))
                 print(result.content)
+                results_json = json.loads(result.content)
+                results = results_json["results"]
+                firstresult = results[0]
+                poster_url = firstresult["poster_path"]
+                movie_posters.append(poster_url)
+                print(results_json['total_results'])
+                print(poster_url)
         movie_dic = {
             "movies": rec_movies
+            "posters": movie_posters
         }
 
         result_template = the_jinja_environment.get_template('templates/result.html')
