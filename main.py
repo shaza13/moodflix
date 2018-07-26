@@ -184,15 +184,15 @@ class ResultPage(webapp2.RequestHandler):
                 results_json = json.loads(result.content)
                 results = results_json["results"]
                 firstresult = results[0]
-                poster_url = firstresult["poster_path"]
+                poster_url = "http://image.tmdb.org/t/p/w500" + firstresult["poster_path"]
                 movie_posters.append(poster_url)
                 print(results_json['total_results'])
                 print(poster_url)
         movie_dic = {
-            "movies": rec_movies
-            "posters": movie_posters
+            "movies": rec_movies,
+            "posters": movie_posters,
         }
-
+        print(movie_posters)
         result_template = the_jinja_environment.get_template('templates/result.html')
         self.response.write(result_template.render(movie_dic))
 
