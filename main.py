@@ -179,6 +179,8 @@ class ResultPage(webapp2.RequestHandler):
             tarzan_key = tarzan.put()
             spooky = Movie(title='Spooky Buddies', duration=88, rating=5, description='The puppies go on a spooky adventure through a haunted mansion.', mood='cheerful, mellow, humorous', occasion='halloween, family night')
             spooky_key = spooky.put()
+            cap3 = Movie(title='Captain America: Civil War', duration=148, rating=8, description="Political involvement in the Avengers' activities causes a rift between Captain America and Iron Man.", mood='energetic', occasion='feeling super, alone time, casual watching, indecisive')
+            cap3_key = cap3.put()
         else:
             pass
             # print("deleting movies")
