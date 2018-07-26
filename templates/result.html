@@ -7,10 +7,12 @@
 <body>
   <div id="firstmovie">
     {% for movie in movies %}
+      <!-- <img src={{movie.poster}} height="42" width="42"> -->
       <h1>{{movie.title}}</h1>
-      <h3>{{movie.description}}</h2>
-      <h3>Duration: {{movie.duration}} minutes</h2>
-      <h3>IMDb Rating: {{movie.rating}} /10</h2>
+      <h3>{{movie.description}}</h3>
+      <h3>Duration: {{movie.duration}} minutes</h3>
+      <h3>IMDb Rating: {{movie.rating}} /10</h3>
+
     {% endfor %}
   </div>
 </body>
